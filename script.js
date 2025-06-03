@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: 'Project One',
             description: 'An awesome project that does amazing things.',
-            link: '#'
+            link: '#',
+            image: 'https://via.placeholder.com/300x200'
         },
         {
             title: 'Project Two',
             description: 'Another cool project with interesting features.',
-            link: '#'
+            link: '#',
+            image: 'https://via.placeholder.com/300x200'
         }
     ];
 
@@ -23,9 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'project-card';
         card.innerHTML = `
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <button class="view-project">View</button>
+            <img src="${project.image}" alt="${project.title}">
+            <div class="card-content">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <button class="view-project">View</button>
+            </div>
         `;
         card.querySelector('.view-project').addEventListener('click', () => {
             modalTitle.textContent = project.title;

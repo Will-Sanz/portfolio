@@ -8,6 +8,7 @@ This repository contains a simple portfolio website that you can use to showcase
 - Projects section generated dynamically via JavaScript.
 - Interactive project details shown in a modal window.
 - Professional color scheme using navy and grey tones.
+- Hero section with a call-to-action button.
 - Easy to customize and extend.
 
 ## Usage
