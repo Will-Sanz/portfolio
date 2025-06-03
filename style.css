@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background: radial-gradient(circle at left, #000 0%, #fff 100%);
+  color: #000;
+  min-height: 100vh;
+}
+
+body.dark {
+  background: radial-gradient(circle at right, #222 0%, #000 100%);
+  color: #fff;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex: 0 0 40%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.menu ul {
+  list-style: none;
+}
+
+.menu li {
+  margin: 0.5rem 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu li::before {
+  content: '\2022';
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.toggle-label {
+  width: 20px;
+  height: 20px;
+  border: 1px solid currentColor;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#theme-toggle {
+  display: none;
+}
+
+#theme-toggle:checked + .toggle-label {
+  background-color: currentColor;
+}
+
+.content {
+  flex: 1 1 60%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  gap: 3rem;
+}
+
+.bio {
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex: none;
+  }
+
+  .content {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
