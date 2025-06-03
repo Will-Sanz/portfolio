@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <div id="project-list" class="project-grid">
+            <!-- Projects will be injected here -->
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>
+            Welcome to my portfolio! I'm passionate about building creative solutions
+            and exploring new technologies. Below you will find some of my favorite
+            projects.
+        </p>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Contact</h2>
+        <p>You can reach me at <a href="mailto:willsanz23@gmail.com">willsanz23@gmail.com</a> or on <a href="https://linkedin.com/in/willsanz" target="_blank">LinkedIn</a>.</p>
+    </section>
+
+    <div id="project-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <a id="modal-link" href="#" target="_blank">Visit Project</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 My Portfolio</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
