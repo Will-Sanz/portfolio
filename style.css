@@ -1,154 +1,108 @@
-:root {
-    --navy: #0d1b2a;
-    --dark-grey: #333;
-    --light-grey: #f7f7f7;
-    --white: #ffffff;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-html {
-    scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--dark-grey);
-    background-color: var(--white);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background: radial-gradient(circle at left, #000 0%, #fff 100%);
+  color: #000;
+  min-height: 100vh;
 }
 
-header {
-    background-color: var(--navy);
-    color: var(--white);
-    padding: 1rem;
-    position: sticky;
-    top: 0;
+body.dark {
+  background: radial-gradient(circle at right, #222 0%, #000 100%);
+  color: #fff;
 }
 
-header h1 {
-    margin: 0;
+.wrapper {
+  display: flex;
+  min-height: 100vh;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 1rem;
+.sidebar {
+  flex: 0 0 40%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-nav a {
-    color: var(--white);
-    text-decoration: none;
+.name {
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
-.hero {
-    background-color: var(--navy);
-    color: var(--white);
-    height: 80vh;
-    display: flex;
+.subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.menu ul {
+  list-style: none;
+}
+
+.menu li {
+  margin: 0.5rem 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu li::before {
+  content: '\2022';
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.toggle-label {
+  width: 20px;
+  height: 20px;
+  border: 1px solid currentColor;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#theme-toggle {
+  display: none;
+}
+
+#theme-toggle:checked + .toggle-label {
+  background-color: currentColor;
+}
+
+.content {
+  flex: 1 1 60%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  gap: 3rem;
+}
+
+.bio {
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+  }
 
-.cta-button {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--white);
-    color: var(--navy);
-    border-radius: 3px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out;
-}
+  .sidebar {
+    flex: none;
+  }
 
-.cta-button:hover {
-    background-color: var(--light-grey);
-}
-
-.view-project {
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--navy);
-    color: var(--white);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.view-project:hover {
-    background-color: #193559;
-}
-
-.container {
-    padding: 2rem;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
-.project-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: var(--light-grey);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    overflow: hidden;
-}
-
-.project-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-4px);
-}
-
-.project-card img {
-    width: 100%;
-    display: block;
-}
-
-.card-content {
-    padding: 1rem;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: var(--light-grey);
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: var(--white);
-    padding: 1.5rem;
-    border-radius: 5px;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.close-button {
-    font-size: 1.2rem;
-    cursor: pointer;
-    float: right;
-}
-
-.hidden {
-    display: none;
+  .content {
+    align-items: flex-start;
+    text-align: left;
+  }
 }

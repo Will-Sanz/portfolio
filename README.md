@@ -1,16 +1,15 @@
 # Portfolio Website
 
-This repository contains a simple portfolio website that you can use to showcase your coding projects.
+A minimalist single-page portfolio built with HTML and CSS.
 
 ## Features
 
-- Responsive design with a clean layout.
-- Projects section generated dynamically via JavaScript.
-- Interactive project details shown in a modal window.
-- Professional color scheme using navy and grey tones.
-- Hero section with a call-to-action button.
-- Easy to customize and extend.
+- Split layout with name and navigation on the left and biography on the right
+- Vertical menu linking to Projects, Info and Contact sections
+- Dark mode toggle
+- Responsive design with a subtle left-to-right gradient background
 
 ## Usage
 
-Open `index.html` in a web browser to view the portfolio. Edit `script.js` to add your own projects and update contact information in `index.html`. Click a project card to see more details in a modal window.
+Open `index.html` in your browser to view the portfolio. Edit the HTML to add your
+own projects and information.
