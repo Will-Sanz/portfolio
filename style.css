@@ -1,20 +1,20 @@
 /* Modern Interactive Portfolio CSS */
 :root {
-  /* Colors */
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --secondary: #06b6d4;
-  --accent: #f59e0b;
-  --text-light: #f1f5f9;
-  --text-dark: #1e293b;
+  /* Colors - White and Navy Theme */
+  --primary: #1e3a8a;
+  --primary-dark: #1e40af;
+  --secondary: #3b82f6;
+  --accent: #60a5fa;
+  --text-light: #ffffff;
+  --text-dark: #1e3a8a;
   --bg-light: #ffffff;
   --bg-light-secondary: #f8fafc;
-  --bg-dark: #0f172a;
-  --bg-dark-secondary: #1e293b;
+  --bg-dark: #1e3a8a;
+  --bg-dark-secondary: #1e40af;
   --border-light: #e2e8f0;
-  --border-dark: #334155;
-  --shadow-light: rgba(0, 0, 0, 0.1);
-  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --border-dark: #3b82f6;
+  --shadow-light: rgba(30, 58, 138, 0.1);
+  --shadow-dark: rgba(30, 58, 138, 0.3);
   
   /* Spacing */
   --container-padding: 2rem;
@@ -682,6 +682,41 @@ body.dark-theme .resume-card {
   0% { opacity: 1; }
   50% { opacity: 0.5; }
   100% { opacity: 1; }
+}
+
+.experience-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.experience-item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+body.dark-theme .experience-item {
+  border-bottom-color: var(--border-dark);
+}
+
+.experience-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: var(--primary);
+}
+
+.experience-item .company {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.experience-item p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
 }
 
 .resume-highlights {

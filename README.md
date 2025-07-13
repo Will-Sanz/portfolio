@@ -1,20 +1,28 @@
 # Will Sanz - Portfolio Website
 
-A modern, responsive portfolio website showcasing professional information, social links, and resume details.
+A modern, responsive portfolio website with white and navy color scheme, showcasing professional experience and personal journey.
 
 ## Features
 
-- **Responsive Design**: Clean, mobile-friendly layout
-- **Social Media Integration**: Direct links to GitHub, LinkedIn, Instagram, and X
-- **Interactive Resume**: Modal popup with detailed resume information
-- **Projects Placeholder**: Ready for future project additions
-- **Professional Contact**: Easy access to email and social profiles
+- **Modern Design**: White and navy color scheme with clean, responsive layout
+- **Dark/Light Theme Toggle**: Interactive theme switching
+- **Animated Hero Section**: Typing animation and floating shapes
+- **Professional Profile**: Integrated resume-style experience section
+- **Social Media Integration**: Direct links to GitHub, LinkedIn, and X
+- **Smooth Navigation**: Animated scrolling and mobile-friendly hamburger menu
 
 ## Files Structure
 
 - `index.html` - Main HTML structure
-- `style.css` - Responsive CSS styling with animations
-- `script.js` - Interactive JavaScript functionality (resume modal)
+- `style.css` - Modern CSS with white/navy theme and animations
+- `js/` - Modular JavaScript files for different features
+  - `theme-toggle.js` - Dark/light theme functionality
+  - `typing-animation.js` - Hero section typing effect
+  - `navigation.js` - Mobile navigation and smooth scrolling
+  - `animations.js` - Page animations and interactions
+  - `pdf-viewer.js` - Resume PDF handling
+  - `utils.js` - Utility functions
+- `script.js` - Main JavaScript coordination
 
 ## Running the Website
 
@@ -62,18 +70,51 @@ npx http-server
 
 Then visit `http://localhost:8000` (or the port shown) in your browser.
 
+## GitHub Pages Deployment
+
+This portfolio is configured for GitHub Pages deployment:
+
+1. **Push to GitHub**: Ensure all files are committed and pushed to the main branch
+2. **Enable Pages**: Go to repository Settings → Pages
+3. **Source**: Select "Deploy from a branch" and choose "main" branch
+4. **Custom Domain**: Add `willsanz.com` in the custom domain field
+5. **DNS Setup**: Update your domain's DNS records to point to GitHub Pages
+
+### DNS Configuration for willsanz.com
+Add these DNS records at Network Solutions:
+```
+Type: A
+Name: @
+Value: 185.199.108.153
+
+Type: A  
+Name: @
+Value: 185.199.109.153
+
+Type: A
+Name: @
+Value: 185.199.110.153
+
+Type: A
+Name: @
+Value: 185.199.111.153
+
+Type: CNAME
+Name: www
+Value: will-sanz.github.io
+```
+
 ## Customization
 
-- **Personal Info**: Update contact details in both `index.html` and `script.js`
+- **Personal Info**: Update contact details in `index.html`
 - **Social Links**: Modify URLs in the social links section
-- **Resume Content**: Edit the resume modal content in `script.js`
-- **Styling**: Customize colors and layout in `style.css`
-- **Projects**: Replace the placeholder in the projects section with real projects
+- **Professional Profile**: Edit experience details in the about section
+- **Styling**: Customize colors in CSS variables at the top of `style.css`
+- **Theme**: Adjust white/navy color scheme in `:root` CSS variables
 
 ## Contact
 
 - **Email**: willsanz23@gmail.com
 - **LinkedIn**: [williamsanz](https://linkedin.com/in/williamsanz)
 - **GitHub**: [Will-Sanz](https://github.com/Will-Sanz)
-- **Instagram**: [wdsanz](https://instagram.com/wdsanz)
 - **X**: [WillSanz11](https://x.com/WillSanz11)
