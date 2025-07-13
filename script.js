@@ -1,158 +1,237 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const viewResumeBtn = document.getElementById('view-resume');
-    const downloadResumeBtn = document.getElementById('download-resume');
+/**
+ * Main Portfolio Script
+ * Coordinates all modules and initializes the application
+ */
 
-    viewResumeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        showResumeModal();
-    });
+class Portfolio {
+  constructor() {
+    this.modules = {};
+    this.isInitialized = false;
+    
+    // Bind context
+    this.init = this.init.bind(this);
+    this.handleResize = this.handleResize.bind(this);
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+  }
 
-    downloadResumeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('Resume download feature coming soon! For now, please contact me directly for my resume.');
-    });
+  async init() {
+    try {
+      Utils.performance.mark('portfolio-init-start');
+      
+      // Initialize core modules
+      await this.initializeModules();
+      
+      // Setup global event listeners
+      this.setupGlobalEvents();
+      
+      // Handle download resume functionality
+      this.setupDownloadResume();
+      
+      // Mark as initialized
+      this.isInitialized = true;
+      
+      Utils.performance.mark('portfolio-init-end');
+      Utils.performance.measure('portfolio-init', 'portfolio-init-start', 'portfolio-init-end');
+      
+      console.log('Portfolio initialized successfully');
+      
+      // Emit initialization complete event
+      Utils.eventEmitter.emit('portfolio:initialized', this.modules);
+      
+    } catch (error) {
+      console.error('Failed to initialize portfolio:', error);
+    }
+  }
 
-    function showResumeModal() {
-        const modal = document.createElement('div');
-        modal.className = 'resume-modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Will Sanz - Resume</h2>
-                    <button class="close-btn">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="resume-content">
-                        <section class="resume-section">
-                            <h3>Contact Information</h3>
-                            <p>Email: willsanz23@gmail.com</p>
-                            <p>GitHub: github.com/Will-Sanz</p>
-                            <p>LinkedIn: linkedin.com/in/williamsanz</p>
-                        </section>
-                        
-                        <section class="resume-section">
-                            <h3>Summary</h3>
-                            <p>Passionate developer with experience in web technologies and software development. 
-                               Seeking opportunities to contribute to innovative projects and grow technical skills.</p>
-                        </section>
-                        
-                        <section class="resume-section">
-                            <h3>Technical Skills</h3>
-                            <ul>
-                                <li>Programming Languages: JavaScript, Python, HTML/CSS</li>
-                                <li>Frameworks & Libraries: React, Node.js</li>
-                                <li>Tools & Technologies: Git, VS Code, Command Line</li>
-                                <li>Databases: Basic SQL knowledge</li>
-                            </ul>
-                        </section>
-                        
-                        <section class="resume-section">
-                            <h3>Education & Learning</h3>
-                            <p>Continuously learning through online courses, coding bootcamps, and personal projects.</p>
-                        </section>
-                        
-                        <section class="resume-section">
-                            <h3>Projects</h3>
-                            <p>Check out my GitHub for latest projects and contributions.</p>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(modal);
-
-        const closeBtn = modal.querySelector('.close-btn');
-        closeBtn.addEventListener('click', () => {
-            document.body.removeChild(modal);
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                document.body.removeChild(modal);
-            }
-        });
+  async initializeModules() {
+    // Initialize theme toggle
+    if (typeof ThemeToggle !== 'undefined') {
+      this.modules.themeToggle = new ThemeToggle();
     }
 
-    const style = document.createElement('style');
-    style.textContent = `
-        .resume-modal {
-            display: flex;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            align-items: center;
-            justify-content: center;
-        }
+    // Initialize navigation
+    if (typeof Navigation !== 'undefined') {
+      this.modules.navigation = new Navigation();
+    }
 
-        .modal-content {
-            background-color: white;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
+    // Initialize typing animation
+    if (typeof TypingAnimation !== 'undefined') {
+      this.modules.typingAnimation = new TypingAnimation('typing-text', {
+        texts: [
+          'Full Stack Developer',
+          'Creative Problem Solver',
+          'Tech Enthusiast',
+          'Code Architect',
+          'Digital Innovator'
+        ],
+        speed: 80,
+        deleteSpeed: 40,
+        pauseTime: 2000
+      });
+    }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
+    // Initialize animations
+    if (typeof Animations !== 'undefined') {
+      this.modules.animations = new Animations();
+    }
 
-        .modal-header h2 {
-            margin: 0;
-            color: #333;
-        }
+    // Initialize PDF viewer
+    if (typeof PDFViewer !== 'undefined') {
+      this.modules.pdfViewer = new PDFViewer();
+    }
 
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-            padding: 0;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    // Wait a bit for DOM to be fully ready
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
 
-        .close-btn:hover {
-            color: #333;
-        }
+  setupGlobalEvents() {
+    // Handle window resize
+    window.addEventListener('resize', Utils.debounce(this.handleResize, 250));
+    
+    // Handle page visibility changes
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
+    
+    // Handle page unload
+    window.addEventListener('beforeunload', () => this.cleanup());
+    
+    // Handle errors
+    window.addEventListener('error', this.handleError);
+  }
 
-        .modal-body {
-            padding: 1.5rem;
+  setupDownloadResume() {
+    const viewPdfBtn = document.getElementById('view-pdf-resume');
+    if (viewPdfBtn) {
+      viewPdfBtn.addEventListener('click', () => {
+        if (this.modules.pdfViewer) {
+          this.modules.pdfViewer.open();
         }
+      });
+    }
+  }
 
-        .resume-content .resume-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .resume-content h3 {
-            color: #007bff;
-            margin-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.3rem;
-        }
-
-        .resume-content ul {
-            margin: 0.5rem 0;
-            padding-left: 1.5rem;
-        }
-
-        .resume-content li {
-            margin-bottom: 0.3rem;
-        }
+  handleDownloadResume() {
+    // Show a message since we don't have an actual PDF
+    const message = `
+      Resume download will be available soon! 
+      For now, you can view my resume using the "View Full Resume" button 
+      or contact me directly at willsanz23@gmail.com for a copy.
     `;
-    document.head.appendChild(style);
+    
+    alert(message);
+    
+    // Track the download attempt (could be sent to analytics)
+    Utils.eventEmitter.emit('resume:download-attempted');
+  }
+
+  handleResize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
+    // Emit resize event for modules that need to respond
+    Utils.eventEmitter.emit('window:resize', { width, height });
+    
+    // Update CSS custom properties for responsive design
+    document.documentElement.style.setProperty('--viewport-width', `${width}px`);
+    document.documentElement.style.setProperty('--viewport-height', `${height}px`);
+  }
+
+  handleVisibilityChange() {
+    if (document.hidden) {
+      // Page is not visible
+      this.pauseAnimations();
+      Utils.eventEmitter.emit('page:hidden');
+    } else {
+      // Page is visible
+      this.resumeAnimations();
+      Utils.eventEmitter.emit('page:visible');
+    }
+  }
+
+  pauseAnimations() {
+    // Pause typing animation to save resources
+    if (this.modules.typingAnimation) {
+      this.modules.typingAnimation.pause();
+    }
+  }
+
+  resumeAnimations() {
+    // Resume typing animation
+    if (this.modules.typingAnimation) {
+      this.modules.typingAnimation.resume();
+    }
+  }
+
+  handleError(event) {
+    console.error('Portfolio error:', event.error);
+    
+    // Track error for debugging
+    Utils.eventEmitter.emit('error:occurred', {
+      message: event.error?.message,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno
+    });
+  }
+
+  // Public API methods
+  getModule(name) {
+    return this.modules[name];
+  }
+
+  isModuleLoaded(name) {
+    return !!this.modules[name];
+  }
+
+  navigateToSection(sectionId) {
+    if (this.modules.navigation) {
+      this.modules.navigation.navigateToSection(sectionId);
+    }
+  }
+
+  toggleTheme() {
+    if (this.modules.themeToggle) {
+      this.modules.themeToggle.toggleTheme();
+    }
+  }
+
+  getCurrentTheme() {
+    return this.modules.themeToggle?.getCurrentTheme() || 'light';
+  }
+
+  // Cleanup method
+  cleanup() {
+    // Clean up animations
+    if (this.modules.animations) {
+      this.modules.animations.destroy();
+    }
+    
+    // Stop typing animation
+    if (this.modules.typingAnimation) {
+      this.modules.typingAnimation.stop();
+    }
+    
+    // Clear event listeners
+    Utils.eventEmitter.events = {};
+    
+    console.log('Portfolio cleaned up');
+  }
+}
+
+// Initialize portfolio when DOM is ready
+Utils.ready(() => {
+  // Wait for all scripts to load
+  Utils.waitForImages(() => {
+    // Create global portfolio instance
+    window.portfolio = new Portfolio();
+    
+    // Initialize with a small delay to ensure all modules are loaded
+    setTimeout(() => {
+      window.portfolio.init();
+    }, 100);
+  });
 });
+
+// Expose utilities globally for debugging
+if (typeof window !== 'undefined') {
+  window.Utils = Utils;
+}

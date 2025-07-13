@@ -3,87 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Will Sanz - Creative Developer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Will Sanz</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Connect</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
 
-    <section id="about" class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>
-                Welcome to my portfolio! I'm Will Sanz, a passionate developer who loves building creative solutions
-                and exploring new technologies. I enjoy tackling complex problems and creating meaningful experiences through code.
-            </p>
-            <p>
-                Currently seeking opportunities to grow and contribute to innovative projects. 
-                Feel free to explore my work and connect with me!
-            </p>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">WillSanz</span>
+                <span class="logo-bracket">/&gt;</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Will Sanz</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="typing-text" id="typing-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    Passionate developer creating innovative digital experiences 
+                    with modern technologies and creative problem-solving.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/Will-Sanz" target="_blank" class="btn btn-primary">View My GitHub</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="window-title">portfolio.js</div>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="line-number">1</span>
+                            <span class="code-text">
+                                <span class="keyword">const</span> 
+                                <span class="variable">developer</span> = {
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">2</span>
+                            <span class="code-text">
+                                &nbsp;&nbsp;<span class="property">name</span>: 
+                                <span class="string">"Will Sanz"</span>,
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">3</span>
+                            <span class="code-text">
+                                &nbsp;&nbsp;<span class="property">skills</span>: 
+                                <span class="array">["JavaScript", "React", "Node.js"]</span>,
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">4</span>
+                            <span class="code-text">
+                                &nbsp;&nbsp;<span class="property">passion</span>: 
+                                <span class="string">"Building amazing things"</span>
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">5</span>
+                            <span class="code-text">};</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" id="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll</span>
         </div>
     </section>
 
-    <section id="resume" class="container">
-        <h2>Resume</h2>
-        <div class="resume-section">
-            <div class="resume-card">
-                <h3>Experience & Skills</h3>
-                <p>Download my full resume or view it online to learn more about my background, experience, and technical skills.</p>
-                <div class="resume-actions">
-                    <a href="#" class="btn btn-primary" id="view-resume">View Resume</a>
-                    <a href="#" class="btn btn-secondary" id="download-resume">Download PDF</a>
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-subtitle">Getting to know the person behind the code</div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-card">
+                        <h3>My Journey</h3>
+                        <p>
+                            I'm a rising junior at the University of Pennsylvania studying Computer Science, 
+                            with a passion for building innovative digital solutions. This past summer, 
+                            I worked as a Software Engineering Intern at Gemini, where I gained hands-on 
+                            experience developing trading and financial technology platforms.
+                        </p>
+                        <p>
+                            I'm particularly interested in cryptocurrency, Web3 technologies, and decentralized 
+                            finance (DeFi). When I'm not coding, you can find me exploring the latest blockchain 
+                            developments, contributing to open source projects, or working on personal projects 
+                            that push the boundaries of what's possible with modern web technologies.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <div class="avatar-placeholder">WS</div>
+                        </div>
+                        <div class="profile-info">
+                            <h4>Will Sanz</h4>
+                            <p>Computer Science Student</p>
+                            <p>University of Pennsylvania</p>
+                            <div class="profile-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Current Status</span>
+                                    <span class="detail-value">Rising Junior</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Recent Experience</span>
+                                    <span class="detail-value">SWE Intern at Gemini</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="container">
-        <h2>Projects</h2>
-        <div class="projects-placeholder">
-            <p>🚧 Projects section coming soon! In the meantime, check out my GitHub for my latest work.</p>
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Resume</h2>
+                <div class="section-subtitle">My professional background and experience</div>
+            </div>
+            <div class="resume-content">
+                <div class="resume-preview">
+                    <div class="resume-card">
+                        <div class="resume-header">
+                            <h3>Professional Profile</h3>
+                            <div class="resume-status">
+                                <span class="status-dot"></span>
+                                <span>Available for opportunities</span>
+                            </div>
+                        </div>
+                        <div class="resume-body">
+                            <p>
+                                Dedicated developer with experience in modern web technologies 
+                                and a passion for creating exceptional user experiences.
+                            </p>
+                            <div class="resume-highlights">
+                                <div class="highlight-item">
+                                    <span>Full Stack Development</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span>Software Engineering</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span>Blockchain & Web3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="btn btn-primary" id="view-pdf-resume">
+                                <span>Resume</span>
+                                <span class="btn-icon">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="container">
-        <h2>Connect With Me</h2>
-        <div class="social-links">
-            <a href="https://github.com/Will-Sanz" class="social-link" target="_blank">
-                <div class="social-icon github"></div>
-                <span>GitHub</span>
-            </a>
-            <a href="https://linkedin.com/in/williamsanz" class="social-link" target="_blank">
-                <div class="social-icon linkedin"></div>
-                <span>LinkedIn</span>
-            </a>
-            <a href="https://instagram.com/wdsanz" class="social-link" target="_blank">
-                <div class="social-icon instagram"></div>
-                <span>Instagram</span>
-            </a>
-            <a href="https://x.com/WillSanz11" class="social-link" target="_blank">
-                <div class="social-icon twitter"></div>
-                <span>X</span>
-            </a>
-        </div>
-        <div class="contact-info">
-            <p>Feel free to reach out for collaboration opportunities or just to say hello!</p>
-            <a href="mailto:willsanz23@gmail.com" class="email-link">willsanz23@gmail.com</a>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="section-subtitle">Ready to collaborate? Let's build something amazing together</div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>Get In Touch</h3>
+                        <p>
+                            I'm always excited to connect with fellow developers, potential collaborators, 
+                            or anyone interested in discussing tech and innovative projects.
+                        </p>
+                        <div class="contact-methods">
+                            <a href="mailto:willsanz23@gmail.com" class="contact-method">
+                                <div class="method-info">
+                                    <span class="method-label">Email</span>
+                                    <span class="method-value">willsanz23@gmail.com</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-section">
+                    <h4>Find Me Online</h4>
+                    <div class="social-grid">
+                        <a href="https://github.com/Will-Sanz" target="_blank" class="social-card github">
+                            <div class="social-icon">
+                                <span>&lt;/&gt;</span>
+                            </div>
+                            <div class="social-info">
+                                <span class="social-name">GitHub</span>
+                                <span class="social-handle">@Will-Sanz</span>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/williamsanz" target="_blank" class="social-card linkedin">
+                            <div class="social-icon">
+                                <span>in</span>
+                            </div>
+                            <div class="social-info">
+                                <span class="social-name">LinkedIn</span>
+                                <span class="social-handle">williamsanz</span>
+                            </div>
+                        </a>
+                        <a href="https://x.com/WillSanz11" target="_blank" class="social-card twitter">
+                            <div class="social-icon">
+                                <span>X</span>
+                            </div>
+                            <div class="social-info">
+                                <span class="social-name">X (Twitter)</span>
+                                <span class="social-handle">@WillSanz11</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2023 My Portfolio</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Will Sanz. Crafted with passion and dedication.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Back to Top</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- JavaScript Modules -->
+    <script src="js/utils.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/typing-animation.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/pdf-viewer.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
